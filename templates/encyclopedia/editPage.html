@@ -1,0 +1,15 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{page}}
+{% endblock %}
+{% block body %}
+    <h1>{{ page }}</h1>
+    <form action="{% url 'saveEditedPage' page %}" method="post">
+        {{ form }} 
+        <textarea> {{ ex }} </textarea>
+        {% csrf_token %}
+        <input type="submit" value="Edit Page">
+    </form>
+    <a href="{% url 'pages' page %}">Go back</a>
+{% endblock %}

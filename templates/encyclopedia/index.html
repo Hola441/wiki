@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>All Pages</h1>
+
+    <ul>
+        {% if length > 0 %}
+            {% for entry in entries %}
+                <li><a href="{% url 'pages' entry %}">{{ entry }}</a></li>
+            {% endfor %}
+        {% else %}
+            No pages found
+        {% endif %}
+    </ul>
+
+{% endblock %}

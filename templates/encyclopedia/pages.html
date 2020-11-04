@@ -1,0 +1,17 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{page}}
+{% endblock %}
+{% block body %}
+    {% if ex == "Error" %}
+        <h1 style="text-align: center;"> 404 ERROR </h1>
+        <h2 style="text-align: center;"> The requested url not found </h2>
+    {% else %}    
+        {{ex | safe }}
+        <form action="{% url 'editPage' page %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Edit Page">
+        </form>
+    {% endif %}
+{% endblock %}
